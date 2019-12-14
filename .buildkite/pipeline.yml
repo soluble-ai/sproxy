@@ -4,4 +4,4 @@ steps:
     agents:
       queue: default
     command:
-      - "./.buildkite/build-image.sh"
+      - "./build-image.sh"
