@@ -1,0 +1,16 @@
+#!/bin/sh
+
+
+CURRENT_DIR=`pwd`
+OUTPUT_DIR=${OUTPUT_DIR-"$CURRENT_DIR"}
+
+docker run -it \
+-p 8888:8888 \
+-e LOCALHOST_TARGET=${LOCALHOST_TARGET-"host.docker.internal"} \
+-v ${OUTPUT_DIR}:/output \
+soluble/sproxy mitmdump \
+-p 8888 \
+-s /scripts/localhost_rewrite.py \
+-s /scripts/har_dump.py \
+--set hardump=/output/dump.har \
+$@
