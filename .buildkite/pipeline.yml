@@ -1,0 +1,7 @@
+steps:
+  - label: Build
+    timeout_in_minutes: 3
+    agents:
+      queue: default
+    command:
+      - "./.buildkite/build-image.sh"
